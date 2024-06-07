@@ -1,0 +1,19 @@
+<div class="container">
+  <input [(ngModel)]="location" placeholder="Enter location" class="input" />
+  <button (click)="fetchWeatherData()">Get Weather</button>
+
+  <div *ngIf="loading">
+    <p>Loading...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
+
+  <div *ngIf="weatherData">
+    <p class="data">Temperature: {{ weatherData.temp }}°C</p>
+    <p class="data">Pressure: {{ weatherData.pres }} hPa</p>
+    <p class="data">Humidity: {{ weatherData.hum }}%</p>
+    <p class="data">Country: <img *ngIf="weatherData.flagUrl" [src]="weatherData.flagUrl" class="flag" /> {{ weatherData.country }}</p>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div>
+  <h2>Etudiant List</h2>
+  <table *ngIf="etudiantList && etudiantList.length > 0">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Age</th>
+        <th>Ville</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let etudiant of etudiantList">
+        <td>{{ etudiant.nom }}</td>
+        <td>{{ etudiant.age }}</td>
+        <td>{{ etudiant.ville }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form (ngSubmit)="addEtudiant()">
+    <label for="nom">Nom:</label>
+    <input type="text" id="nom" [(ngModel)]="newEtudiant.nom" name="nom" required>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" [(ngModel)]="newEtudiant.age" name="age" required>
+
+    <label for="ville">Ville:</label>
+    <input type="text" id="ville" [(ngModel)]="newEtudiant.ville" name="ville" required>
+
+    <button type="submit">Add Etudiant</button>
+  </form>
+</div>

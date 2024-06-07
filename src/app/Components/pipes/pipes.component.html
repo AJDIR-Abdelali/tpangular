@@ -1,0 +1,102 @@
+<div>
+  <p>details works!</p>
+  <ul>
+    <li *ngIf="tab[0]%2 != 0">
+      {{ tab[0] }} est impaire
+    </li>
+  </ul>
+
+    <br/>
+    <p>ng for /ng switch</p>
+  <ul>
+    <ng-container *ngFor="let elt of tab  ">
+      <ng-container [ngSwitch]="true">
+          <li *ngSwitchCase="elt>=0 && elt<10">
+              Non valid :echec
+          </li>
+          <li *ngSwitchCase="elt>=10 && elt<12">
+              valid :moyen
+          </li>
+          <li *ngSwitchCase="elt>=12 && elt<14">
+              valid :Assez bien
+          </li>
+          <li *ngSwitchCase="elt>=14 && elt<16">
+              valid :bien
+          </li>
+          <li *ngSwitchDefault>
+              valid :Tres bien
+          </li>
+      </ng-container>
+  </ng-container>
+   </ul>
+   <h4>pipes number</h4>
+   <p>nombre nom formaté {{number}}</p>
+   <p>nombre formaté, 2 nombre decimale apres la virgule : {{number | number:'2.2-2'}}</p>
+   <p>pourcentage {{number | percent: '.2'}}</p>
+   <input type="number" [(ngModel)]="val"/>
+   <p>{{val}}</p>
+   /////
+   <p>{{val |calcul :"5"}}</p>
+
+
+   <p>string pipe of hello world using "l"</p>
+   <p>{{ 'hello world' | calculstring:'l' }}</p>
+</div>
+<!--  -->
+<h1>------------</h1>
+<h1>Tp PDF</h1>
+<h1> Lespipesbasiques:PipesDate</h1>
+<div>
+  <h1 [class.red]="true"> Demonstration des pipes basiques </h1>
+  <h2 [class.blue]="true">Pipes Date </h2>
+  <div [style]="{'text-size':'14px', 'color':'green'}">
+    Date Complet: {{ dateAujourd }} <br />
+    Short Date: {{ dateAujourd | date: 'shortDate' }}<br />
+    Medium Date : {{dateAujourd | date:'mediumDate'}}<br />
+    Full Date : {{dateAujourd | date:'fullDate'}}<br />
+    Time : {{dateAujourd | date:'HH:mm'}}<br />
+    Time : {{dateAujourd | date:'hh:mm:ss a'}}<br />
+    Time : {{dateAujourd | date:'hh:mm:ss p'}}<br />
+  </div>
+</div>
+<h1> Lespipesbasiques:PipesNumber</h1>
+<div>
+  <h1 [class.red]="true"> Démonstration des pipes basiques </h1>
+  <h2 [class.blue]="true">Pipes Number </h2>
+  <div [ngStyle]="{'text-size':'14px', 'color':'green'}">
+    Nombre non-formaté : {{ nombre }}<br />
+    2 nombres Decimales après Virgule : {{ nombre | number:'2.2-2' }}
+  </div>
+</div>
+<h1> Lespipesbasiques:PipesDevise</h1>
+<div class="container">
+  <h1 class="red">Basic Pipes Demonstration</h1>
+  <h2 class="blue">Pipes Device</h2>
+  <div style="text-size: 14px; color: green;">
+    Unformatted number: {{ nombre }}<br />
+    USD Doller($): {{ nombre | currency:'USD':true }}<br />
+    USD Doller: {{ nombre | currency:'USD':false }}<br />
+  </div>
+</div>
+<!-- <p>Number of characters '{{ someString }}' that are '{{ targetChar }}': {{ someString | calculstring:targetChar }}</p> -->
+<div class="container">
+  <h1 class="red">Basic Pipes Demonstration</h1>
+  <h2 class="blue">String Manipulation Pipes</h2>
+
+  <div [ngStyle]="{'text-size': '14px', 'color': 'green'}">
+    Raw Input: {{ message }}<br />
+    Uppercase: {{ message | uppercase }}<br />
+    Lowercase: {{ message | lowercase }}<br />
+    Title Case: {{ message | titlecase }}<br />
+    <!-- Word Count: {{ message | split: ' ' | wc }} -->
+  </div>
+</div>
+<div class="container">
+  <h1 class="red">Basic Pipes Demonstration</h1>
+  <h2 class="blue">Number Formatting Pipes</h2>
+  <div [ngStyle]="{'text-size': '14px', 'color': 'green'}">
+    Raw Input: {{ numberValue }}<br />
+    Percent: {{ numberValue | percent:'1.2' }}<br />
+    Currency (USD): {{ numberValue | currency:'USD':true }}<br />
+  </div>
+</div>

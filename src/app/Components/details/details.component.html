@@ -1,0 +1,78 @@
+<div>
+  <h1 [ngClass]="{'blue':true}">details works!</h1>
+  <ul>
+    <li *ngIf="tab[0] % 2 != 0; else sinon">
+      {{ tab[0] }} est impaire
+    </li>
+    <ng-template #sinon>
+      <li>
+        {{ tab[0] }} est paire
+      </li>
+    </ng-template>
+  </ul>
+  <h1 [ngClass]="{'blue':true}"> Directives: *ngFor Exemple1 </h1>
+  <ul>
+    <li *ngFor="let elt of tab">
+      {{ elt }}
+    </li>
+  </ul>
+
+  <h1 [ngClass]="{'blue':true}"> Directives: *ngFor Exemple2 </h1>
+  <ul>
+    <li *ngFor="let elt of tab ; let i=index">
+      {{ i }} : {{ elt }}
+    </li>
+  </ul>
+
+  <h1 [ngClass]="{'blue':true}"> Directives: *ngForExemple 3: on peut vérifier si l’élément de la table est le premier </h1>
+  <ul>
+    <li *ngFor="let elt of tab ; let i=index ; let isFirst = first">
+      {{ i }} : {{ elt }} : {{ isFirst }}
+    </li>
+  </ul>
+
+  <h1 [ngClass]="{'blue':true}"> Directives: *ngSwitchExemple 1 </h1>
+  <ul>
+    <li *ngFor="let elt of tab ; let i=index ; let isFirst = first">
+      {{ i }} : {{ elt }} : {{ isFirst }}
+    </li>
+  </ul>
+
+  <h1 [ngClass]="{'blue':true}"> Directives: *ngSwitchExemple 1 </h1>
+  <ul>
+    <ng-container *ngFor="let elt of moyennes">
+      <ng-container [ngSwitch]="true">
+        <li *ngSwitchCase="elt >= 0 && elt < 10">
+          Non Valide : échec
+        </li>
+        <li *ngSwitchCase="elt >= 10 && elt < 12">
+          Valide : Moyen
+        </li>
+        <li *ngSwitchCase="elt >= 12 && elt < 14">
+          Valide : Assez bien
+        </li>
+        <li *ngSwitchCase="elt >= 14 && elt < 16">
+          Valide : Bien
+        </li>
+        <li *ngSwitchDefault>
+          Valide : Très Bien
+        </li>
+      </ng-container>
+    </ng-container>
+  </ul>
+  <h1 [ngClass]="{'blue':true}">   Directives: ngClasset ngStyle Exemple   </h1>
+  <div>
+    <h3>Directives d'attribut</h3>
+    <span [class.red]="true">Attribut prend la couleur rouge</span><br />
+    <span [ngClass]="{'blue':true}">Attribut Change couleur en utilisant NgClass</span><br />
+    <span [ngStyle]="{'font-size':'14px','color':'green'}">Attribut change style en utilisant NgStyle</span>
+    <br /><br />
+    <span [class.cyan]="afficherColor">Attribut prend la couleur en utilisant la variable afficherColor</span><br />
+    <span [ngClass]="{'brown':afficherColor}">Attribut change couleur en utilisant NgClass</span><br />
+    <input type="button" value="Changer couleur" (click)="changeColor()" />
+    <br /><br />
+    <span [class.cyan]="afficherColor">Attribut change couleur via la variable afficherColor</span><br />
+    <span [ngClass]="{'cyan':afficherColor, 'red' : !afficherColor}">Attribut change couleur en utilisant NgClass</span><br />
+    <br />
+</div>
+</div>

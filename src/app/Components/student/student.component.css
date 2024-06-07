@@ -1,0 +1,24 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.mat-elevation-z8 {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.form-container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mat-form-field {
+  margin-right: 20px;
+}
+
+button {
+  margin-top: 20px;
+}

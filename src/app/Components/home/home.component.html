@@ -1,0 +1,16 @@
+<div style="display: flex; justify-content: center; align-items: center;">
+  <div>
+    <p>je suis le composant Home</p>
+    <div>
+      <h1>Calcul</h1>
+      <input type="number" [(ngModel)]="op1" /><br/>
+      <input type="number" [(ngModel)]="op2" /><br/>
+      <button (click)="somme()">+</button>
+      <button (click)="multiplication()">*</button>
+      <button (click)="division()">/</button>
+      <button (click)="soustraction()">-</button>
+      <br>
+      {{rslt}}
+    </div>
+  </div>
+</div>

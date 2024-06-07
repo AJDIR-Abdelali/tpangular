@@ -1,0 +1,90 @@
+<h2>Template Driven Form</h2>
+<div>
+  <form #signupForm="ngForm" (ngSubmit)="registerUser(signupForm)">
+    <table style="width:100%;" cellpadding="5" cellspacing="5">
+      <tr>
+        <td style="width:160px;">
+          <label for="username">User Name:</label>
+        </td>
+        <td style="width:160px;">
+          <input type="text" name="username" id="username" [(ngModel)]="username" required>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:160px;">
+          <label for="email">Email:</label>
+        </td>
+        <td style="width:160px;">
+          <input type="text" name="email" id="email" [(ngModel)]="email" required>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:160px;">
+          <label for="password">Password:</label>
+        </td>
+        <td style="width:160px;">
+          <input type="password" name="password" id="password" [(ngModel)]="password" required>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:400px;"></td>
+        <td style="width:160px;">
+          <button type="submit">Enregistrer</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<div *ngIf="showMessageFlag">
+  <h3>Merci {{formData.username}} pour votre enregistrement!</h3>
+</div>
+<!-- ---------------------- -->
+<h2>Reactive Form Module</h2>
+<div>
+  <form [formGroup]="loginForm" (ngSubmit)="registerUser2()">
+    <table style="width:100%;" cellpadding="5" cellspacing="5">
+      <tr>
+        <td style="width:200px;">
+          <label for="username">User Name:</label>
+        </td>
+        <td style="width:400px;">
+          <input type="text" formControlName="username">
+          <div *ngIf="loginForm.get('username')?.errors" class="error">
+            <div *ngIf="loginForm.get('username')?.hasError('required')">
+              Username is required.
+            </div>
+            <div *ngIf="loginForm.get('username')?.hasError('minlength')">
+              Username must be longer than 5 characters.
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:200px;">
+          <label for="password">Password:</label>
+        </td>
+        <td style="width:400px;">
+          <input type="password" formControlName="password">
+          <div *ngIf="loginForm.get('password')?.errors" class="error">
+            <div *ngIf="loginForm.get('password')?.hasError('required')">
+              The password is required.
+            </div>
+            <div *ngIf="loginForm.get('password')?.hasError('needsExclamation')">
+              Your password must have an exclamation mark!
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:200px;"></td>
+        <td style="width:160px;">
+          <button type="submit" [disabled]="!loginForm.valid">Log In</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<div *ngIf="showMessage">
+  <h3>Thanks You {{ formDataTwo.username }} for registration.</h3>
+</div>
+
