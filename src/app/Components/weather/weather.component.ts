@@ -20,7 +20,7 @@ export class WeatherComponent {
   loading: boolean = false;
   error: string = '';
 
-  private apiKey = '097152a78e9e73c2ba9ee795e6f6fcb1';
+  private apiKey = '';
 
   constructor(private http: HttpClient) { }
 
